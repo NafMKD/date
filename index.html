@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #main-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 30px;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #yes-button {
+            background-color: #4caf50;
+            color: #fff;
+        }
+
+        #no-button {
+            background-color: #e74c3c;
+            color: #fff;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main-container">
+        <div id="one">
+            <p>Do you wanna go out with me?</p>
+            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDdtZ2JiZDR0a3lvMWF4OG8yc3p6Ymdvd3g2d245amdveDhyYmx6eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif" width="90" height="100"/>
+        </div>
+        <div style="display: none;" id="two">
+            <p>yeeeyyyy</p>
+            <img style="margin-top: -30px;" src="https://media0.giphy.com/media/T86i6yDyOYz7J6dPhf/giphy.gif" width="90" height="100"/></br>
+            <span>Expect a call from me :)</span>
+        </div>
+        <button id="yes-button" type="button" onclick="onYesButtonClick()">Yes</button>
+        <button id="no-button" type="button" onmouseover="onNoButtonHover()" onmouseleave="onNoButtonLeave()" >No</button>
+    </div>
+
+    <script>
+        function onYesButtonClick() {
+            const one = document.getElementById("one");
+            const two = document.getElementById("two");
+            const yes = document.getElementById("yes-button");
+            const no = document.getElementById("no-button");
+
+            one.style.display = "none";
+            yes.style.display = "none";
+            no.style.display = "none";
+            two.style.display = "block";
+        }
+
+        function onNoButtonHover() {
+            const no = document.getElementById("no-button");
+
+            no.style.opacity = 0.0;
+            no.style.cursor = "default";
+        }
+
+        function onNoButtonLeave() {
+            const no = document.getElementById("no-button");
+
+            no.style.opacity = 1;
+            no.style.cursor = "default";
+        }
+    </script>
+</body>
+
+</html>

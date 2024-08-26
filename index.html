@@ -14,6 +14,7 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
+            overflow: hidden; /* Prevent scrollbar */
         }
 
         #main-container {
@@ -22,6 +23,9 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
+            position: relative;
+            min-height: 290px;
+            min-width: 452px;
         }
 
         p {
@@ -37,16 +41,22 @@
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
+            position: absolute;
+            transition: all 0.5s ease; /* Smooth transition */
         }
 
         #yes-button {
             background-color: #4caf50;
             color: #fff;
+            left: 140px;
+            top: 208px;
         }
 
         #no-button {
             background-color: #e74c3c;
             color: #fff;
+            left: 240px;
+            top: 208px;
         }
 
         button:hover {
@@ -59,15 +69,15 @@
     <div id="main-container">
         <div id="one">
             <p>Do you wanna go out with me?</p>
-            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDdtZ2JiZDR0a3lvMWF4OG8yc3p6Ymdvd3g2d245amdveDhyYmx6eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif" width="90" height="100"/>
+            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDdtZ2JiZDR0a3lvMWF4OG8yc3p6Ymdvd3g2d245amdveDhyYmx6eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif" width="90" height="100" />
         </div>
         <div style="display: none;" id="two">
             <p>yeeeyyyy</p>
-            <img style="margin-top: -30px;" src="https://media0.giphy.com/media/T86i6yDyOYz7J6dPhf/giphy.gif" width="90" height="100"/></br>
+            <img style="margin-top: -30px;" src="https://media0.giphy.com/media/T86i6yDyOYz7J6dPhf/giphy.gif" width="90" height="100" /></br>
             <span>Expect a call from me :)</span>
         </div>
         <button id="yes-button" type="button" onclick="onYesButtonClick()">Yes</button>
-        <button id="no-button" type="button" onmouseover="onNoButtonHover()" onmouseleave="onNoButtonLeave()" >No</button>
+        <button id="no-button" type="button" onmouseover="onNoButtonHover()">No</button>
     </div>
 
     <script>
@@ -85,16 +95,18 @@
 
         function onNoButtonHover() {
             const no = document.getElementById("no-button");
+            const container = document.getElementById("main-container");
 
-            no.style.opacity = 0.0;
-            no.style.cursor = "default";
-        }
+            // Calculate random positions within the container's bounds
+            const maxX = container.clientWidth - no.clientWidth;
+            const maxY = container.clientHeight - no.clientHeight;
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
 
-        function onNoButtonLeave() {
-            const no = document.getElementById("no-button");
-
-            no.style.opacity = 1;
-            no.style.cursor = "default";
+            // Apply new positions
+            no.style.position = "absolute";
+            no.style.left = `${randomX}px`;
+            no.style.top = `${randomY}px`;
         }
     </script>
 </body>
